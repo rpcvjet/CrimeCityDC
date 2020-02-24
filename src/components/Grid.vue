@@ -1,15 +1,18 @@
 <template>
   <div class="">
-    <!-- <b-field label="Filter by Crime"></b-field> -->
-    <b-form-select v-model="selected" :options="options">
+    <!-- <b-form-select v-model="selected" :options="options">
       <template v-slot:first>
         <b-form-select-option :value="null" disabled>-- Filter by Crime --</b-form-select-option>
         <b-form-select-option value="options">ALL</b-form-select-option>
       </template>
-      <!-- These options will appear after the ones from 'options' prop -->
-      <!-- <b-form-select-option value="D">Option D</b-form-select-option> -->
-    </b-form-select>
+
+    </b-form-select> -->
     <b-table
+      selectable
+      no-select-on-click
+      @row-hovered="mouseOver"
+      @row-unhovered="mouseLeave"
+      hover
       :items="data"
       :fields="fields"
       head-variant="light"
@@ -38,7 +41,6 @@ export default {
       selected: null,
       data: this.content,
       content: null,
-      options: [],
       fields: [
         {
           key: "OFFENSE",
@@ -64,7 +66,7 @@ export default {
     };
   },
   watch: {
-    griddata: ["getData", "getFilterOptions"],
+    griddata: ["getData"],
   },
   computed: {
    
@@ -75,12 +77,13 @@ export default {
         return x.attributes;
       });
     },
-    getFilterOptions() {
-      let text = this.griddata.map(item => {
-        return item.attributes.OFFENSE;
-      });
-      this.options = [...new Set(text)];
+      mouseOver(item,index){
+      this.$emit('mouse-over-crime', index)
+    },
+    mouseLeave(item,index){
+      this.$emit('mouse-leave-crime', index)
     }
+    
   }
 };
 </script>

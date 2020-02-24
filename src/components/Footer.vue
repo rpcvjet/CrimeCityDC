@@ -1,14 +1,12 @@
 <template>
-  <div>
-   <footer class="py-5 bg-dark">
-    <div class="m-0 text-center text-white">
-    <p>
-      6WardCrime created by <a href="https://www.linkedin.com/in/kennyedwards/">Kenneth Edwards</a>. The source code is licensed
-      <a href="http://opensource.org/licenses/mit-license.php">MIT.</a>
-    </p>
-  </div>
-</footer>
-  </div>
+ <div>
+   <b-navbar type="dark" variant="info" fixed="bottom" class="py-3">
+     <b-navbar-nav medium align="center" class="container text-center">
+        <p>6WardCrime created by <a  href="https://www.linkedin.com/in/kennyedwards/">Kenneth Edwards</a>.</p> 
+        <p>The source code is licensed<a href="http://opensource.org/licenses/mit-license.php">MIT.</a> </p>
+     </b-navbar-nav>
+   </b-navbar>
+   </div>
 </template>
 
 <script>
