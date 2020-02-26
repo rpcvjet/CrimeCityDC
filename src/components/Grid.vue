@@ -78,10 +78,10 @@ export default {
       });
     },
       mouseOver(item,index){
-      this.$emit('mouse-over-crime', index)
+      this.$emit('mouse-over-crime', item.arrayIndex)
     },
     mouseLeave(item,index){
-      this.$emit('mouse-leave-crime', index)
+      this.$emit('mouse-leave-crime', item.arrayIndex)
     }
     
   }
