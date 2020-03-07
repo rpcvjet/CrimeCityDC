@@ -77,7 +77,6 @@ export default {
         this.filteredData = this.data
       } 
       else {
-
         this.filteredData = this.data.filter( crime => {
           let offense = crime.attributes.OFFENSE !== "" || null ? crime.attributes.OFFENSE === this.filteredCrime: true;      
           return offense
@@ -85,7 +84,6 @@ export default {
       }
     },
     selectedTime(event){
-      console.log('event', event)   
 
       this.filteredTime = event
        if(event === null) {
@@ -101,8 +99,6 @@ export default {
 
     },
       selectedBlock(event){
-      console.log('event', event)   
-
       this.filteredBlock = event
        if(event === null) {
         this.filteredData = this.data
