@@ -1,12 +1,5 @@
 <template>
   <div class="">
-    <!-- <b-form-select v-model="selected" :options="options">
-      <template v-slot:first>
-        <b-form-select-option :value="null" disabled>-- Filter by Crime --</b-form-select-option>
-        <b-form-select-option value="options">ALL</b-form-select-option>
-      </template>
-
-    </b-form-select> -->
     <b-table
       selectable
       no-select-on-click
@@ -19,6 +12,7 @@
       class="text-center"
       :per-page="perPage"
       :current-page="currentPage"
+      @row-clicked="zoomOnIcon"
     ></b-table>
     <b-pagination
     v-if="this.griddata"
@@ -77,7 +71,11 @@ export default {
         return x.attributes;
       });
     },
-      mouseOver(item,index){
+    zoomOnIcon(item){
+        item = [item.LATITUDE, item.LONGITUDE]
+      this.$emit('zoomtoicon', item)
+    },
+    mouseOver(item,index){
       this.$emit('mouse-over-crime', item.arrayIndex)
     },
     mouseLeave(item,index){

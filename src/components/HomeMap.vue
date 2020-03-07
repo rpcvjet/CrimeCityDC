@@ -7,7 +7,7 @@
         v-for="(crime, index) in points"
         :key="index"
       >
-        <l-popup>{{ crime.offense }}</l-popup>
+        <l-popup>{{crime.offense}}</l-popup>
         <l-icon
           v-if="crime.offense === 'ROBBERY'"
           :icon-size="crime.iconSize"
@@ -43,6 +43,11 @@
           :icon-size="crime.iconSize"
           :icon-url="theftAuto"
         ></l-icon>
+         <l-icon
+          v-if="crime.offense === 'HOMICIDE'"
+          :icon-size="crime.iconSize"
+          :icon-url="homicide"
+        ></l-icon>
       </l-marker>
     </l-map>
   </div>
@@ -59,6 +64,7 @@ import {
   LLayerGroup
 } from "vue2-leaflet";
 import robbery from "../assets/robbery.png";
+import homicide from "../assets/murder.png";
 import burglary from "../assets/theft.svg";
 import car from "../assets/car.svg";
 import theftOther from "../assets/theftOther.png";
@@ -68,7 +74,7 @@ import theftfromauto from "../assets/theftFromAuto.png";
 import moment from "moment";
 
 export default {
-  props: ["mapdata", "filteredCrime"],
+  props: ["mapdata", "filteredCrime", "newZoom"],
   computed: {
     points() {
       return this.mapdata.map(x => {
@@ -76,12 +82,15 @@ export default {
           lat: x.attributes.LATITUDE,
           lng: x.attributes.LONGITUDE,
           offense: x.attributes.OFFENSE,
+          method: x.attributes.METHOD,
           iconSize: x.iconSize
         };
-        // console.log(data.iconSize)
         return data;
       });
-    }
+    },
+  },
+  watch: {
+    newZoom: ['centerOnMarker']
   },
   data() {
     return {
@@ -99,18 +108,26 @@ export default {
       theftOther: theftOther,
       rape: rape,
       adw: adw,
-      theftAuto: theftfromauto
+      theftAuto: theftfromauto,
+      homicide: homicide,
+      zoomSelected:null
     };
   },
+ 
   mounted() {
     this.getTime();
   },
+
   beforeDestroy() {
     if (this.map) {
       this.map.remove();
     }
   },
   methods: {
+    centerOnMarker(){
+      this.center = this.newZoom
+      this.zoom = 15.75
+    },
     getTime() {
       let twoWeeksAgo = moment()
         .subtract(14, "days")
@@ -124,14 +141,13 @@ export default {
     LMarker,
     LIcon,
     LPopup
-    // LLayerGroup
   }
 };
 </script>
 
 <style scoped>
 #map {
-  width: 100px;
+  width: 110px;
   min-height: 480px;
   /* min-height: 100%; */
   min-width: 100%;
