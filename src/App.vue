@@ -1,16 +1,18 @@
 <template>
   <div>
-    <NavBar :offense="this.data" @filteredCrime="selectedCrime"></NavBar>
+    <NavBar :offense="this.data" @filteredCrime="selectedCrime" @filteredTime="selectedTime" @filteredBlock="selectedBlock" ></NavBar>
     <HomeMap
       class="leafmap"
       :mapdata="this.filteredData"
       :filteredCrime="this.filteredCrime"
+      :newZoom="this.newZoom"
     ></HomeMap>
     <Grid
       class="aggrid-area"
       :griddata="this.filteredData"
       @mouse-over-crime="mouseOverCrime"
       @mouse-leave-crime="mouseLeaveCrime"
+      @zoomtoicon="getZoom"
     >
     </Grid>
     <Footer class="foot"></Footer>
@@ -33,7 +35,10 @@ export default {
       filteredData:[],
       normalIcon: [30, 30],
       largeIcon: [60, 60],
-      filteredCrime: null
+      filteredCrime: null,
+      filteredTime:null,
+      filteredBlock: null,
+      newZoom: null
     };
   },
   methods: {
@@ -58,13 +63,58 @@ export default {
     mouseLeaveCrime(index) {
       this.data[index].iconSize = this.normalIcon;
     },
+    getZoom(zoom){
+      this.newZoom = zoom
+    },
     selectedCrime(event) {
-      this.filteredCrime = event;
-      this.filteredData = this.data.filter( crime => {
-        //console.log('crime',crime);
-        return crime.attributes.OFFENSE === this.filteredCrime;
-      })
-      console.log("this.filteredCrime", this.filteredCrime);
+      if(event === 'DAY' || event === 'EVENING' || event === 'MIDNIGHT') {
+        this.filteredTime = event
+      } else  {
+        this.filteredCrime = event;
+      }
+           
+      if(event === null) {
+        this.filteredData = this.data
+      } 
+      else {
+
+        this.filteredData = this.data.filter( crime => {
+          let offense = crime.attributes.OFFENSE !== "" || null ? crime.attributes.OFFENSE === this.filteredCrime: true;      
+          return offense
+        })
+      }
+    },
+    selectedTime(event){
+      console.log('event', event)   
+
+      this.filteredTime = event
+       if(event === null) {
+        this.filteredData = this.data
+      }
+      else {
+        this.filteredData = this.data.filter( crime => {
+            let timeofCrime =  crime.attributes.SHIFT !== "" || null ? crime.attributes.SHIFT === this.filteredTime: true;
+            this.filteredCrime = null
+            return timeofCrime
+        })
+      }
+
+    },
+      selectedBlock(event){
+      console.log('event', event)   
+
+      this.filteredBlock = event
+       if(event === null) {
+        this.filteredData = this.data
+      }
+      else {
+        this.filteredData = this.data.filter( crime => {
+            let block =  crime.attributes.BLOCK !== "" || null ? crime.attributes.BLOCK === this.filteredBlock: true;
+            this.filteredCrime = null;
+            return block
+        })
+      }
+
     }
   },
   created() {
@@ -83,5 +133,10 @@ export default {
 html,
 body {
   height: 100vh;
+}
+
+.foot {
+  padding: 5px;
+  height: calc(20vh - 50px);
 }
 </style>
