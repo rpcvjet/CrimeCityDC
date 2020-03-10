@@ -1,7 +1,7 @@
 <template>
     <div>
   <b-navbar toggleable="lg" type="dark" variant="info" sticky>
-    <b-navbar-brand href="#">6 Ward Crime</b-navbar-brand>
+    <b-navbar-brand class="title">6 Ward Crime</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
@@ -133,8 +133,16 @@ export default {
   margin-top: 5px;
 }
 
-.controls {
-  /* margin-left: 12em; */
+@font-face {
+    font-family: 'metal';
+    src: url('../assets/MetalCrime.ttf');
+    font-style: normal
+  
 }
+
+.title {
+  font-family: metal
+}
+
 
 </style>
