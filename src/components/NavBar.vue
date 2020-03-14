@@ -1,8 +1,51 @@
 <template>
     <div>
   <b-navbar toggleable="lg" type="dark" variant="info" sticky>
-    <b-navbar-brand href="#">6 Ward Crime</b-navbar-brand>
+    <b-navbar-brand class="title">6 Ward Crime
 
+    <b-icon-info class="h3 mb-0 icon" shift-v="-2.5" shift-h="5" v-b-modal.info-modal> </b-icon-info>
+    <b-modal id="info-modal" class="title" title="6 Ward Crime" ok-only scrollable>
+    <p class="my-4">6WardCrime.com is snapshot of crime in the 6th Ward of Washington, D.C. in the last 7 days.</p>
+    <img src="../assets/shooting.png">Assault W/Dangerous Weapon
+    <p>Knowingly or purposely causing serious bodily injury, threatening to do so, or knowingly engaging in conduct that creates a grave risk of serious bodily injury to another person.</p>
+    
+
+    <img src="../assets/robbery.png" width="40px"> Robbery
+    <p>The taking of anything of value from another person by force, violence or fear.</p>
+    
+    <img src="../assets/rape.png"> Sex Abuse
+    <br/>
+    <p>Engaging in or causing another person to submit to a sexual act by force, threat or reasonable fear, involuntary impairment of 
+    the person's ability to appraise or control his or her conduct, rendering that other person unconscious or under conditions 
+    wherein a reasonable person would not believe that consent was freely and knowingly given.</p>
+
+    <img src="../assets/car.svg" width="40px"> Motor Vehicle Theft
+    <br/>
+    <p>The theft of any self-propelled, motor driven vehicle that is primarily intended to transport persons and property on a highway.</p>
+    
+    <img src="../assets/murder.png" width="40px"> Homicide
+    <br/>
+    <p>Killing of another purposely, or otherwise, with malice aforethought.</p>
+
+
+    <img src="../assets/theft.svg" width="40px"> Burglary
+    <br/>
+    <p>The unlawful entry of a structure, vessel, watercraft, railroad car or yard where chattels are deposited with the intent to commit any criminal offense</p> 
+
+    <img src="../assets/theftFromAuto.png" width="40px"> Theft F/Auto
+    <br/>
+    <p>Wrongfully obtaining or using the property of another with the intent to deprive the owner of items from within a vehicle, excluding motor vehicle parts and accessories</p>
+
+    <img src="../assets/theftOther.png" width="40px"> Theft/Other
+    <br/>
+    <p>A broad inclusion of Theft offenses including embezzlement, theft of services and fraud/false pretenses. The Theft/Other category excludes theft of items from a motor vehicle or the motor vehicle itself.</p>
+
+    <h3>SHIFT</h3>
+    <p>DAY (7am - 3pm)</p>
+    <p>EVENING (3pm - 11pm)</p>
+    <p>MIDNIGHT (11pm - 7am)</p>
+  </b-modal>
+    </b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
         <b-container>
@@ -133,8 +176,25 @@ export default {
   margin-top: 5px;
 }
 
-.controls {
-  /* margin-left: 12em; */
+@font-face {
+    font-family: 'metal';
+    src: url('../assets/MetalCrime.ttf');
+    font-style: normal
+  
 }
+
+.title {
+  font-family: metal
+}
+
+b-modal {
+  font-family: metal;
+}
+
+.icon {
+  cursor: pointer
+}
+
+
 
 </style>

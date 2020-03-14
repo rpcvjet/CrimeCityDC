@@ -3,6 +3,7 @@ import App from './App.vue'
 import  {Icon} from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 
+
 delete Icon.Default.prototype._getIconUrl;
 
 Icon.Default.mergeOptions({
@@ -11,11 +12,12 @@ Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 //bootstrap stuff
-import BootstrapVue  from 'bootstrap-vue'
+import {BootstrapVue, BIconInfo}  from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
+Vue.component('BIconInfo', BIconInfo)
 
 
 Vue.config.productionTip = false

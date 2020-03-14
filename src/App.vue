@@ -8,7 +8,7 @@
       :newZoom="this.newZoom"
     ></HomeMap>
     <Grid
-      class="aggrid-area"
+      class="aggrid-area d-none d-md-block"
       :griddata="this.filteredData"
       @mouse-over-crime="mouseOverCrime"
       @mouse-leave-crime="mouseLeaveCrime"
@@ -133,6 +133,6 @@ body {
 
 .foot {
   padding: 5px;
-  height: calc(20vh - 50px);
+  height: calc(20vh - 80px);
 }
 </style>

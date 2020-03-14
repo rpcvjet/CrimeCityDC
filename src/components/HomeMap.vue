@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="holder">
     <l-map :zoom="zoom" :center="center" id="map">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-marker
@@ -146,12 +146,29 @@ export default {
 </script>
 
 <style scoped>
-#map {
+@media all and (max-width:415px) {
+
+  #map {
   width: 110px;
-  min-height: 480px;
+  min-height: 1000px;
   /* min-height: 100%; */
   min-width: 100%;
   display: block;
+  }
+}
+
+@media all and (min-width: 416px) {
+
+#map {
+  width: 110px;
+  min-height: 510px;
+  min-width: 100%;
+  display: block;
+}
+
+
+
+
 }
 
 .load {
