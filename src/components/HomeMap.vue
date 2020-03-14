@@ -146,7 +146,7 @@ export default {
 </script>
 
 <style scoped>
-@media all and (max-width:400px) {
+@media all and (max-width:415px) {
 
   #map {
   width: 110px;
@@ -157,7 +157,7 @@ export default {
   }
 }
 
-@media all and (min-width: 401px) {
+@media all and (min-width: 416px) {
 
 #map {
   width: 110px;
