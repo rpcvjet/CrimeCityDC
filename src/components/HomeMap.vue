@@ -68,15 +68,15 @@ import {
   LPopup,
   LLayerGroup
 } from "vue2-leaflet";
-import robbery from "../assets/robbery.png";
-import homicide from "../assets/murder.png";
-import burglary from "../assets/theft.svg";
-import car from "../assets/car.svg";
-import theftOther from "../assets/theftOther.png";
-import rape from "../assets/rape.png";
-import adw from "../assets/shooting.png";
-import theftfromauto from "../assets/theftFromAuto.png";
-import arson from '../assets/arson.png'
+import robbery from "../icons/robbery.png";
+import homicide from "../icons/murder.png";
+import burglary from "../icons/theft.svg";
+import car from "../icons/car.svg";
+import theftOther from "../icons/theftOther.png";
+import rape from "../icons/rape.png";
+import adw from "../icons/shooting.png";
+import theftfromauto from "../icons/theftFromAuto.png";
+import arson from '../icons/arson.png'
 import moment from "moment";
 
 export default {
@@ -102,9 +102,9 @@ export default {
     return {
       zoom: 14.25,
       center: [38.8931304, -77.0105247],
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
       map: null,
       timeTwoWeeksAgo: null,
       isLoading: false,
@@ -153,30 +153,71 @@ export default {
 </script>
 
 <style scoped>
-@media all and (max-width:415px) {
-
+/* Small screens - MOBILE */
+ 
+@media only screen and (max-width: 40em) { 
   #map {
   width: 110px;
   min-height: 1000px;
+  min-width: 100%;
+  display: block;
+  }
+} 
+ 
+/* Medium screens - TABLET */
+
+/* min-width 641px, medium screens */
+ 
+@media only screen and (min-width: 40em){ 
+  #map {
+  width: 110px;
+  min-height: 400px;
+  min-width: 100%;
+  display: block;
+  }
+} 
+ 
+/* Large screens - DESKTOP */
+@media only screen and (min-width: 64.063em) {
+
+   #map {
+  width: 110px;
+  min-height: 340px;
   /* min-height: 100%; */
   min-width: 100%;
   display: block;
   }
-}
 
-@media all and (min-width: 416px) {
-
+ } 
+ 
+  
+/* XLarge screens */
+/* min-width 1025px, large screens */
+@media only screen and (min-width: 90.063em) {
 #map {
   width: 110px;
-  min-height: 510px;
+  min-height: 480px;
+  /* min-height: 100%; */
   min-width: 100%;
   display: block;
-}
+  }
+ } 
+ 
+ /* min-width 1441px, xlarge screens */
+ 
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+ 
+/* XXLarge screens */
+@media only screen and (min-width: 120.063em) {
+#map {
+  width: 110px;
+  min-height: 540px;
+  min-width: 100%;
+  display: block;
+  }
+  
+ } 
 
-
-
-
-}
 
 .load {
   height: 100%;

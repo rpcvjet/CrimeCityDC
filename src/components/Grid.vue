@@ -54,8 +54,6 @@ export default {
           label: "BLOCK",
           sortable: true,
           class: 'text-center'
-
-
         }
       ]
     };
