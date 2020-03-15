@@ -133,6 +133,6 @@ body {
 
 .foot {
   padding: 5px;
-  height: calc(20vh - 80px);
+  /* height: calc(10vh - 80px); */
 }
 </style>
