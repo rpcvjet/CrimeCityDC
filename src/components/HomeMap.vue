@@ -48,6 +48,11 @@
           :icon-size="crime.iconSize"
           :icon-url="homicide"
         ></l-icon>
+         <l-icon
+          v-if="crime.offense === 'ARSON'"
+          :icon-size="crime.iconSize"
+          :icon-url="arson"
+        ></l-icon>
       </l-marker>
     </l-map>
   </div>
@@ -71,6 +76,7 @@ import theftOther from "../assets/theftOther.png";
 import rape from "../assets/rape.png";
 import adw from "../assets/shooting.png";
 import theftfromauto from "../assets/theftFromAuto.png";
+import arson from '../assets/arson.png'
 import moment from "moment";
 
 export default {
@@ -110,6 +116,7 @@ export default {
       adw: adw,
       theftAuto: theftfromauto,
       homicide: homicide,
+      arson: arson,
       zoomSelected:null
     };
   },

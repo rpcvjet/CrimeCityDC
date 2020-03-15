@@ -39,7 +39,11 @@
     <img src="../assets/theftOther.png" width="40px"> Theft/Other
     <br/>
     <p>A broad inclusion of Theft offenses including embezzlement, theft of services and fraud/false pretenses. The Theft/Other category excludes theft of items from a motor vehicle or the motor vehicle itself.</p>
-
+    
+    <img src="../assets/arson.png" width="40px"> Arson
+    <br/>
+    <p>The malicious burning, or attempt to burn, any structure, vessel, vehicle, railroad car or property of another</p>
+    
     <h3>SHIFT</h3>
     <p>DAY (7am - 3pm)</p>
     <p>EVENING (3pm - 11pm)</p>

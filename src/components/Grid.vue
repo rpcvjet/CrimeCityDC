@@ -9,10 +9,11 @@
       :items="data"
       :fields="fields"
       head-variant="light"
-      class="text-center"
       :per-page="perPage"
       :current-page="currentPage"
       @row-clicked="zoomOnIcon"
+      fixed
+
     ></b-table>
     <b-pagination
     v-if="this.griddata"
@@ -38,22 +39,22 @@ export default {
       fields: [
         {
           key: "OFFENSE",
-          label: "Crime",
-          width: "33",
-          sortable: true
+          label: "CRIME",
+          sortable: true,
+          class: 'text-center'
         },
         {
           key: "SHIFT",
           label: "SHIFT",
-          width: "33",
-          sortable: true
-
+          sortable: true,
+          class: 'text-center',
         },
         {
           key: "BLOCK",
           label: "BLOCK",
-          width: "33",
-          sortable: true
+          sortable: true,
+          class: 'text-center'
+
 
         }
       ]
@@ -87,4 +88,6 @@ export default {
 </script>
 
 <style scoped>
+
+
 </style>
