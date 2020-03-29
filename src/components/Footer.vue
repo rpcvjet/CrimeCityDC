@@ -1,10 +1,10 @@
 <template>
  <div>
-   <b-navbar type="dark" variant="info" fixed="bottom" class="py-1">
-     <b-navbar-nav medium align="center" class="container text-center">
-        <p>6 Ward Crime created by <a  href="https://www.linkedin.com/in/kennyedwards/" target="_blank">Kenneth Edwards</a></p> 
-     </b-navbar-nav>
-   </b-navbar>
+    <footer id="sticky-footer" class="py-4 bg-info text-white-50 fixed-bottom" >
+    <div class="container text-center">
+        <small>6 Ward Crime created by <a  href="https://www.linkedin.com/in/kennyedwards/" target="_blank">Kenneth Edwards</a></small> 
+    </div>
+  </footer>
    </div>
 </template>
 
@@ -13,9 +13,6 @@ export default {};
 </script>
 
 <style scoped>
-p {
-  margin-top : 10px;
-}
 
 a {
   color:white
