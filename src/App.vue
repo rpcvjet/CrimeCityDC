@@ -1,21 +1,22 @@
 <template>
-  <div>
-    <NavBar :offense="this.data" @filteredCrime="selectedCrime" @filteredTime="selectedTime" @filteredBlock="selectedBlock" ></NavBar>
+  <div class="wrapper">
+    <NavBar class="mynav item" :offense="this.data" @filteredCrime="selectedCrime" @filteredTime="selectedTime" @filteredBlock="selectedBlock" ></NavBar>
     <HomeMap
-      class="leafmap"
+      class="leafmap item"
       :mapdata="this.filteredData"
       :filteredCrime="this.filteredCrime"
       :newZoom="this.newZoom"
-    ></HomeMap>
+    ></HomeMap> 
+  
     <Grid
-      class="aggrid-area d-none d-md-block"
+      class="grid item"
       :griddata="this.filteredData"
       @mouse-over-crime="mouseOverCrime"
       @mouse-leave-crime="mouseLeaveCrime"
       @zoomtoicon="getZoom"
     >
-    </Grid>
-    <Footer class="foot"></Footer>
+    </Grid> 
+    <Footer class="item footer"></Footer>
   </div>
 </template>
 
@@ -128,11 +129,79 @@ export default {
 <style>
 html,
 body {
-  height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-.foot {
-  padding: 5px;
-  /* height: calc(10vh - 80px); */
+html {
+  box-sizing: border-box;
+
 }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.mynav {
+  height: 100%;
+}
+
+.leafmap {
+  height: 50vh
+}
+
+.grid {
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  margin-top:0px;
+
+}
+/* Mobile */
+@media all and (max-width: 500px) { 
+
+.grid {
+ display:none
+
+  }
+
+  .leafmap {
+    height: 85vh;
+  }
+
+}
+
+/* IPad/Ipad Pro */
+@media all and (min-width: 768px) { 
+
+.grid {
+  /* border: 1px solid blue; */
+  height: calc(50vh - 136px);
+  overflow-y: auto;
+
+}
+
+}
+
+/* Xrtra large screens */
+@media all and (min-width: 1441px) { 
+
+.grid {
+  height: calc(50vh - 136px);
+  overflow-y: auto;
+
+}
+
+}
+
+
 </style>

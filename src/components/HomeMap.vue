@@ -1,6 +1,6 @@
 <template>
-  <div class="holder">
-    <l-map :zoom="zoom" :center="center" id="map">
+  <div>
+    <l-map :zoom="zoom" :center="center" id="map" :options="{zoomControl: false}">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-marker
         :lat-lng="[crime.lat, crime.lng]"
@@ -54,6 +54,7 @@
           :icon-url="arson"
         ></l-icon>
       </l-marker>
+
     </l-map>
   </div>
 </template>
@@ -66,7 +67,7 @@ import {
   LMarker,
   LIcon,
   LPopup,
-  LLayerGroup
+  LLayerGroup,
 } from "vue2-leaflet";
 import robbery from "../icons/robbery.png";
 import homicide from "../icons/murder.png";
@@ -133,7 +134,7 @@ export default {
   methods: {
     centerOnMarker(){
       this.center = this.newZoom
-      this.zoom = 15.75
+      this.map.panTo(this.center)
     },
     getTime() {
       let twoWeeksAgo = moment()
@@ -147,79 +148,12 @@ export default {
     LTileLayer,
     LMarker,
     LIcon,
-    LPopup
+    LPopup,
   }
 };
 </script>
 
 <style scoped>
-/* Small screens - MOBILE */
  
-@media only screen and (max-width: 40em) { 
-  #map {
-  width: 110px;
-  min-height: 1000px;
-  min-width: 100%;
-  display: block;
-  }
-} 
- 
-/* Medium screens - TABLET */
 
-/* min-width 641px, medium screens */
- 
-@media only screen and (min-width: 40em){ 
-  #map {
-  width: 110px;
-  min-height: 400px;
-  min-width: 100%;
-  display: block;
-  }
-} 
- 
-/* Large screens - DESKTOP */
-@media only screen and (min-width: 64.063em) {
-
-   #map {
-  width: 110px;
-  min-height: 340px;
-  /* min-height: 100%; */
-  min-width: 100%;
-  display: block;
-  }
-
- } 
- 
-  
-/* XLarge screens */
-/* min-width 1025px, large screens */
-@media only screen and (min-width: 90.063em) {
-#map {
-  width: 110px;
-  min-height: 480px;
-  /* min-height: 100%; */
-  min-width: 100%;
-  display: block;
-  }
- } 
- 
- /* min-width 1441px, xlarge screens */
- 
-@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
- 
-/* XXLarge screens */
-@media only screen and (min-width: 120.063em) {
-#map {
-  width: 110px;
-  min-height: 540px;
-  min-width: 100%;
-  display: block;
-  }
-  
- } 
-
-
-.load {
-  height: 100%;
-}
 </style>

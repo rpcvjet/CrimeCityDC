@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <b-table
+<div class="mytable">
+      <b-table
       selectable
       no-select-on-click
       @row-hovered="mouseOver"
@@ -9,21 +9,10 @@
       :items="data"
       :fields="fields"
       head-variant="light"
-      :per-page="perPage"
-      :current-page="currentPage"
-      @row-clicked="zoomOnIcon"
-      fixed
-
-    ></b-table>
-    <b-pagination
-    v-if="this.griddata"
-      align='center'
-      v-model="currentPage"
-      :total-rows=this.griddata.length
-      :per-page="perPage"
-      aria-controls="my-table"
-    ></b-pagination>
-  </div>
+      @row-clicked="zoomOnIcon"   
+      fixed  
+    ></b-table>  
+</div>
 </template>
 
 <script>

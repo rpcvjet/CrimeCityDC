@@ -13,11 +13,14 @@ Icon.Default.mergeOptions({
 });
 //bootstrap stuff
 import {BootstrapVue, BIconInfo}  from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import './../node_modules/jquery/dist/jquery.min.js';
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './../node_modules/bootstrap/dist/js/bootstrap.min.js';
 
-Vue.use(BootstrapVue);
 Vue.component('BIconInfo', BIconInfo)
+Vue.use(BootstrapVue)
 
 
 Vue.config.productionTip = false
