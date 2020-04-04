@@ -10,8 +10,9 @@ Users can filter by Crime, Shift(Day, Evening, Night), OR which block the crime 
 
 ## Technologies Used
 
-⋅⋅* Washington,DC Police API. 
+### -- [Washington,DC Crime Api](https://opendata.dc.gov/datasets/crime-incidents-in-2020/geoservice)
 
+<br/>
 <p align="center">
   <img src="https://images.opencollective.com/bootstrap/72d6b5d/logo/256.png">
   <img src="https://cdn.iconscout.com/icon/free/png-256/vuejs-3-1175070.png">
