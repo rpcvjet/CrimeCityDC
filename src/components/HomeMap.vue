@@ -1,6 +1,6 @@
 <template>
   <div>
-    <l-map :zoom="zoom" :center="center" id="map" :options="{zoomControl: false}">
+    <l-map ref="mymap" :zoom="zoom" :center="center" id="map" :options="{zoomControl: false}">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-marker
         :lat-lng="[crime.lat, crime.lng]"
@@ -97,7 +97,7 @@ export default {
     },
   },
   watch: {
-    newZoom: ['centerOnMarker']
+    newZoom: ['centerOnMarker'],
   },
   data() {
     return {
@@ -106,7 +106,6 @@ export default {
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:
         '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
-      map: null,
       timeTwoWeeksAgo: null,
       isLoading: false,
       robbery: robbery,
@@ -118,30 +117,17 @@ export default {
       theftAuto: theftfromauto,
       homicide: homicide,
       arson: arson,
-      zoomSelected:null
     };
   },
- 
-  mounted() {
-    this.getTime();
-  },
-
   beforeDestroy() {
-    if (this.map) {
-      this.map.remove();
+    if (this.$refs.mymap) {
+      this.$refs.mymap.remove();
     }
   },
   methods: {
     centerOnMarker(){
-      this.center = this.newZoom
-      this.map.panTo(this.center)
+      this.$refs.mymap.mapObject.panTo(this.newZoom);
     },
-    getTime() {
-      let twoWeeksAgo = moment()
-        .subtract(14, "days")
-        .valueOf();
-      this.timeTwoWeeksAgo = twoWeeksAgo;
-    }
   },
   components: {
     LMap,
@@ -152,8 +138,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
- 
-
-</style>
