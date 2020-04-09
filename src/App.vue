@@ -167,15 +167,14 @@ html {
 
 }
 /* Mobile */
-@media all and (max-width: 500px) { 
+@media all and (max-width: 737px) { 
 
 .grid {
  display:none
-
   }
 
-  .leafmap {
-    height: 85vh;
+.leafmap {
+  height: 100vh;
   }
 
 }

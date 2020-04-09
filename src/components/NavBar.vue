@@ -1,6 +1,6 @@
 <template>
     <div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <nav class="navbar navbar-expand-md navbar-light bg-info fixed-top">
   <div class="navbar-brand title text-white">6 Ward Crime
   <b-icon-info class="h3 mb-0 icon" shift-v="-2.5"  v-b-modal.info-modal> </b-icon-info>
   </div>
