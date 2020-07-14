@@ -1,7 +1,6 @@
 <template>
 <div class="mytable">
       <b-table
-      selectable
       no-select-on-click
       @row-hovered="mouseOver"
       @row-unhovered="mouseLeave"
@@ -10,7 +9,7 @@
       :fields="fields"
       head-variant="light"
       @row-clicked="zoomOnIcon"   
-      fixed  
+      fixed
     ></b-table>  
 </div>
 </template>
