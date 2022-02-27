@@ -28,7 +28,7 @@ import Footer from "./components/Footer.vue";
 import Grid from "./components/Grid.vue";
 import CookieLaw from 'vue-cookie-law'
 const url =
-  "https://maps2.dcgis.dc.gov/dcgis/rest/services/FEEDS/MPD/MapServer/3/query?where=WARD='6' AND REPORT_DAT > CURRENT_TIMESTAMP - INTERVAL '7' DAY&outFields=REPORT_DAT,SHIFT,METHOD,WARD,OFFENSE,BLOCK,DISTRICT,NEIGHBORHOOD_CLUSTER,BLOCK_GROUP,CENSUS_TRACT,LATITUDE,LONGITUDE,BID,START_DATE,END_DATE,OBJECTID,VOTING_PRECINCT&outSR=4326&f=json";
+  "https://maps2.dcgis.dc.gov/dcgis/rest/services/FEEDS/MPD/MapServer/4/query?where=WARD='6' AND REPORT_DAT > CURRENT_TIMESTAMP - INTERVAL '7' DAY&outFields=REPORT_DAT,SHIFT,METHOD,WARD,OFFENSE,BLOCK,DISTRICT,NEIGHBORHOOD_CLUSTER,BLOCK_GROUP,CENSUS_TRACT,LATITUDE,LONGITUDE,BID,START_DATE,END_DATE,OBJECTID,VOTING_PRECINCT&outSR=4326&f=json";
 import axios from "axios";
 
 export default {
@@ -49,7 +49,6 @@ export default {
       axios
         .get(url)
         .then(res => {
-          console.log('ress', res)
           this.data = res.data.features.map((r, idx) => {
             r.iconSize = this.normalIcon;
             r.attributes.arrayIndex = idx;
