@@ -2,6 +2,7 @@
   <div class="wrapper">
     <NavBar class="mynav item" :offense="this.data" @filteredCrime="selectedCrime" @filteredTime="selectedTime" @filteredBlock="selectedBlock" ></NavBar>
     <HomeMap
+      v-if="this.filteredData.length > 0"
       class="leafmap item"
       :mapdata="this.filteredData"
       :filteredCrime="this.filteredCrime"
@@ -28,7 +29,7 @@ import Footer from "./components/Footer.vue";
 import Grid from "./components/Grid.vue";
 import CookieLaw from 'vue-cookie-law'
 const url =
-  "https://maps2.dcgis.dc.gov/dcgis/rest/services/FEEDS/MPD/MapServer/4/query?where=WARD='6' AND REPORT_DAT > CURRENT_TIMESTAMP - INTERVAL '7' DAY&outFields=REPORT_DAT,SHIFT,METHOD,WARD,OFFENSE,BLOCK,DISTRICT,NEIGHBORHOOD_CLUSTER,BLOCK_GROUP,CENSUS_TRACT,LATITUDE,LONGITUDE,BID,START_DATE,END_DATE,OBJECTID,VOTING_PRECINCT&outSR=4326&f=json";
+  "https://maps2.dcgis.dc.gov/dcgis/rest/services/FEEDS/MPD/MapServer/4/query?where=WARD='6' AND REPORT_DAT > CURRENT_TIMESTAMP - INTERVAL '14' DAY&outFields=REPORT_DAT,SHIFT,METHOD,WARD,OFFENSE,BLOCK,DISTRICT,NEIGHBORHOOD_CLUSTER,BLOCK_GROUP,CENSUS_TRACT,LATITUDE,LONGITUDE,BID,START_DATE,END_DATE,OBJECTID,VOTING_PRECINCT&outSR=4326&f=json";
 import axios from "axios";
 
 export default {
@@ -41,7 +42,7 @@ export default {
       filteredCrime: null,
       filteredTime:null,
       filteredBlock: null,
-      newZoom: null
+      newZoom: null,
     };
   },
   methods: {
@@ -87,7 +88,6 @@ export default {
       }
     },
     selectedTime(event){
-
       this.filteredTime = event
        if(event === null) {
         this.filteredData = this.data
@@ -113,8 +113,11 @@ export default {
             return block
         })
       }
-
+    },
+    selectedOverlay(mapchoice) {
+      this.overlay = mapchoice
     }
+
   },
   created() {
     this.getData();
@@ -156,12 +159,12 @@ html {
 }
 
 .mynav {
-  height: 100%;
+  height: 80%;
 }
 
-.leafmap {
+/* .leafmap {
   height: 50vh
-}
+} */
 
 .grid {
   height: calc(100vh - 150px);
@@ -187,7 +190,7 @@ html {
 
 .grid {
   /* border: 1px solid blue; */
-  height: calc(50vh - 136px);
+  height: calc(54vh - 136px);
   overflow-y: auto;
 
 }
@@ -198,7 +201,7 @@ html {
 @media all and (min-width: 1441px) { 
 
 .grid {
-  height: calc(50vh - 136px);
+  height: calc(54vh - 136px);
   overflow-y: auto;
 
 }

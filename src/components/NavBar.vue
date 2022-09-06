@@ -83,6 +83,11 @@ export default {
         selected: null,
         timeofCrime: null,
         block: null,
+        selectedMap: 'icons',
+        mapOptions: [
+          { text: 'Icons', value: 'icons' },
+          { text: 'Heat Map', value: 'heatmap' },
+        ]
     }
   },    
   props:['offense'],
@@ -171,6 +176,9 @@ export default {
       this.selected = null
       this.timeofCrime = null
       this.$emit('filteredBlock', this.block)
+    },
+    test(choice){
+      this.$emit('toggleOverlay', choice)
     }
   }
 }
@@ -192,10 +200,7 @@ export default {
 .title,span {
   font-family: metal
 }
-
-
-
-
+ 
 b-modal {
   font-family: metal;
 }
