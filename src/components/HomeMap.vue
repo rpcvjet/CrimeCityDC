@@ -20,9 +20,10 @@ import 'leaflet-groupedlayercontrol';
 import 'leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css';
 import 'heatmap.js'
 import "leaflet.heat";
-import HeatmapOverlay from 'leaflet-heatmap/leaflet-heatmap.js'
-
-
+ let customIcon = L.Icon.extend({
+        iconSize: [30,30]
+      })
+var robberyIcon 
 export default {
   props: ["mapdata", "filteredCrime", "newZoom"],
   computed: {
@@ -38,9 +39,11 @@ export default {
         return data;
       });
     },
+
   },
   watch: {
-    newZoom: ['centerOnMarker']
+    newZoom: ['centerOnMarker'],
+    filteredCrime: ['filterIcons']
   },
   data() {
     return {
@@ -75,44 +78,20 @@ export default {
     }
   },
   methods: {
-    centerOnMarker(){
-      this.map.panTo(this.newZoom);
+    filterIcons(){
+      console.log('filtering')
+      this.points.forEach(el => {
+        el.offense === 'ROBBERY'
+         this.map.removeLayer(robberyIcon)
+      })
     },
-    initMap: function () {
-      console.log('L', L)
-
-      const basemaps = {
-          Streets: L.tileLayer(this.url, {
-          maxZoom: 19,
-          attribution: this.attribution
-        }),
-          Gotham: L.tileLayer(this.gotham, {
-          maxZoom: 18,
-          attribution: this.gotham_attribution
-        }),
-      }
-
-    
-        console.log('points', this.points)
-
-     this.map = L.map('map', {
-       zoomControl: false,
-          center: this.center,
-          zoom : this.zoom,
-          layers: [basemaps.Streets, this.groups.Icons],
-      })
-      
-      let customIcon = L.Icon.extend({
-        iconSize: [30,30]
-      })
-      
+    createIcons() {
       this.points.forEach(element => {
-
-
         let crime = element.offense
           switch (crime) {
             case 'ROBBERY':
-              var robberyIcon = new customIcon({iconUrl:robbery})
+              robberyIcon = new customIcon({iconUrl:robbery})
+
                 L.marker([element.lat, element.lng], {
                 icon: robberyIcon,
               }).bindPopup(element.offense).addTo(this.groups.Icons)
@@ -169,8 +148,34 @@ export default {
             default:
               break;
         }          
-        });
+      });
+    },
+    centerOnMarker(){
+      this.map.panTo(this.newZoom);
+    },
+    initMap: function () {
+      console.log('L', L)
+      console.log('points', this.points)
 
+      const basemaps = {
+          Streets: L.tileLayer(this.url, {
+          maxZoom: 19,
+          attribution: this.attribution
+        }),
+          Gotham: L.tileLayer(this.gotham, {
+          maxZoom: 18,
+          attribution: this.gotham_attribution
+        }),
+      }
+    
+     this.map = L.map('map', {
+       zoomControl: false,
+          center: this.center,
+          zoom : this.zoom,
+          layers: [basemaps.Streets, this.groups.Icons],
+      })
+      this.createIcons()
+      
       var groupedOverlays = {
         "Maps": {
           "Icons": this.groups.Icons,
@@ -181,9 +186,11 @@ export default {
       var options = {
         position: 'bottomleft',
         collapsed: false,
+        exclusiveGroups: ["Maps"], 
       };
       
       L.control.groupedLayers(basemaps, groupedOverlays, options).addTo(this.map);
+
 
     },
     initHeatLayer() {
