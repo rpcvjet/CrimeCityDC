@@ -42,7 +42,7 @@ export default {
   },
   watch: {
     newZoom: ["centerOnMarker"],
-    filteredCrime: ["filterIcons"],
+    mapdata: ["filterIcons"],
   },
   data() {
     return {
@@ -83,13 +83,10 @@ export default {
   },
   methods: {
     filterIcons() {
-      // We must create view model to preseve scope while inside the each layer function
       let vm = this;
-      // Loop through every icon layer inside the layer group and remove the icon
       this.groups.Icons.eachLayer(function(layer) {
         vm.groups.Icons.removeLayer(layer)
       });
-      // Rebuild the layer group icons
       this.createIcons();
     },
     getIcon(crime) {
