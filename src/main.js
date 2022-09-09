@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import  {Icon} from 'leaflet'
+import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 import VueGtag from "vue-gtag";
-
-
-
 
 delete Icon.Default.prototype._getIconUrl;
 
@@ -15,7 +12,7 @@ Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 //bootstrap stuff
-import {BootstrapVue, BIconInfo}  from 'bootstrap-vue'
+import { BootstrapVue, BIconInfo } from 'bootstrap-vue'
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import './../node_modules/jquery/dist/jquery.min.js';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
