@@ -12,7 +12,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.2.0",
     "core-js": "^3.3.2",
-    "exports-loader": "^0.7.0",
+    "exports-loader": "^4.0.0",
     "heatmap.js": "^2.0.5",
     "install": "^0.13.0",
     "jquery": "^3.4.1",
@@ -32,14 +32,14 @@
     "vue-property-decorator": "^8.3.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.0.0",
-    "@vue/cli-plugin-eslint": "^4.0.0",
-    "@vue/cli-service": "^4.0.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.24.2",
-    "sass-loader": "^8.0.0",
+    "sass-loader": "^13.2.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
