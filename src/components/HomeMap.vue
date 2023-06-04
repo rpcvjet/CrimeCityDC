@@ -53,9 +53,8 @@ export default {
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:
         '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
-      gotham_attribution:
-        '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-      center: [38.8931304, -77.0105247],
+      gotham_attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+      center: [38.8931304, -77.0105247],                    
       timeTwoWeeksAgo: null,
       isLoading: false,
       groups: {
@@ -135,7 +134,8 @@ export default {
     centerOnMarker() {
       this.map.panTo(this.newZoom);
     },
-    initMap: function() {
+
+    initMap: function () {
       const basemaps = {
         Streets: L.tileLayer(this.url, {
           maxZoom: 19,
