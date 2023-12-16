@@ -172,18 +172,34 @@ html {
   margin-top:0px;
 
 }
-/* Mobile */
-@media all and (max-width: 737px) { 
+
+/* Mobile Iphone Pro 14 */
+@media all and (max-width: 430px) { 
 
 .grid {
  display:none
   }
 
 .leafmap {
-  height: 100vh;
+  height: 92.5vh !important;
   }
 
 }
+
+/* Mobile Iphone Pro 12 */
+@media all and (max-width: 390px) { 
+
+.grid {
+ display:none
+  }
+
+.leafmap {
+  height: 91.5vh !important;
+  }
+
+}
+
+
 
 /* IPad/Ipad Pro */
 @media all and (min-width: 768px) { 
